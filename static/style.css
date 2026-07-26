@@ -1,0 +1,328 @@
+/* ============================================
+   方言语音识别系统 v2.0 - 样式
+   ============================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #1a202c;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 20px 80px;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 32px;
+    padding: 20px 0;
+}
+header h1 { font-size: 32px; margin-bottom: 8px; }
+header .subtitle { font-size: 14px; opacity: 0.9; margin-bottom: 8px; }
+header .engine-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    font-size: 12px;
+    color: white;
+    backdrop-filter: blur(8px);
+}
+
+.panel {
+    background: white;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+.panel h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #2d3748;
+    border-left: 4px solid #667eea;
+    padding-left: 12px;
+}
+.hint { font-size: 13px; color: #718096; margin-bottom: 12px; }
+
+/* 方言分组 */
+.dialect-group {
+    margin-bottom: 14px;
+}
+.group-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 8px;
+    padding: 4px 0;
+    border-left: 3px solid #667eea;
+    padding-left: 8px;
+}
+details.dialect-group > summary.group-title {
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+}
+details.dialect-group > summary.group-title::before {
+    content: '▸ ';
+    display: inline-block;
+    transition: transform 0.2s;
+    color: #667eea;
+}
+details.dialect-group[open] > summary.group-title::before {
+    content: '▾ ';
+}
+.count-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    background: #667eea;
+    color: white;
+    font-size: 12px;
+    border-radius: 10px;
+    font-weight: normal;
+}
+
+/* 方言选择网格 */
+.dialect-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 8px;
+}
+.dialect-chip {
+    cursor: pointer;
+    user-select: none;
+}
+.dialect-chip input { display: none; }
+.dialect-chip span {
+    display: block;
+    padding: 8px 10px;
+    text-align: center;
+    background: #f7fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 13px;
+    transition: all 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.dialect-chip:hover span { background: #edf2f7; }
+.dialect-chip input:checked + span {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+.dialect-chip.default-on span {
+    background: linear-gradient(135deg, #fef5e7 0%, #feebc8 100%);
+    border-color: #f6ad55;
+    font-weight: 600;
+}
+
+/* 录音区 */
+.record-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-primary { background: #667eea; color: white; }
+.btn-primary:hover:not(:disabled) { background: #5a67d8; transform: translateY(-1px); }
+.btn-danger { background: #f56565; color: white; }
+.btn-danger:hover:not(:disabled) { background: #e53e3e; }
+.btn-ghost { background: rgba(102, 126, 234, 0.1); color: #667eea; }
+.btn-ghost:hover:not(:disabled) { background: rgba(102, 126, 234, 0.2); }
+.btn:not(.btn-primary):not(.btn-danger):not(.btn-ghost) { background: #edf2f7; color: #2d3748; }
+.btn:not(.btn-primary):not(.btn-danger):not(.btn-ghost):hover:not(:disabled) { background: #e2e8f0; }
+
+.status {
+    margin-left: auto;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    background: #edf2f7;
+    color: #4a5568;
+}
+.status.recording { background: #fed7d7; color: #c53030; animation: pulse 1.5s infinite; }
+.status.processing { background: #feebc8; color: #c05621; }
+.status.done { background: #c6f6d5; color: #276749; }
+.status.error { background: #fed7d7; color: #c53030; }
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+#waveform {
+    width: 100%;
+    height: 100px;
+    background: #1a202c;
+    border-radius: 8px;
+    display: block;
+}
+
+/* 结果区 */
+.result-meta-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: #f7fafc;
+    border-radius: 8px;
+}
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 80px;
+}
+.meta-label {
+    font-size: 11px;
+    color: #718096;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.meta-item b { font-size: 15px; color: #2d3748; }
+.meta-dialect {
+    padding: 2px 8px;
+    background: #fef5e7;
+    color: #d69e2e;
+    border-radius: 4px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.result-cell {
+    margin-bottom: 14px;
+}
+.result-label {
+    font-size: 13px;
+    color: #4a5568;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+.label-hint {
+    font-weight: normal;
+    color: #a0aec0;
+    font-size: 12px;
+    margin-left: 6px;
+}
+.result-text {
+    padding: 16px;
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    min-height: 60px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #2d3748;
+    word-break: break-word;
+}
+.result-text.accent {
+    background: linear-gradient(135deg, #fff5f7 0%, #fed7e2 100%);
+    border-color: #fbb6ce;
+    color: #702459;
+}
+.result-text mark {
+    background: linear-gradient(120deg, #fbd38d 0%, #f6ad55 100%);
+    color: #744210;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.sentences-details {
+    margin-top: 12px;
+    background: #f7fafc;
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+.sentences-details summary {
+    cursor: pointer;
+    color: #4a5568;
+    font-size: 14px;
+    font-weight: 500;
+}
+.sentences-list {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.sentence-item {
+    display: flex;
+    gap: 12px;
+    padding: 6px 10px;
+    background: white;
+    border-radius: 4px;
+    font-size: 13px;
+}
+.sentence-time { color: #a0aec0; min-width: 110px; font-family: monospace; }
+.sentence-text { color: #2d3748; flex: 1; }
+
+/* 架构区 */
+.arch-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+.arch-step {
+    flex: 1;
+    min-width: 110px;
+    padding: 14px 8px;
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    color: #2d3748;
+}
+.arch-step small { display: block; font-size: 11px; color: #718096; margin-top: 4px; }
+.arch-arrow { font-size: 18px; color: #667eea; font-weight: bold; }
+.arch-note {
+    padding: 12px 16px;
+    background: #fef5e7;
+    border-left: 4px solid #ed8936;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #744210;
+    line-height: 1.7;
+}
+.arch-note b { color: #c05621; }
+
+footer {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+    margin-top: 32px;
+}
+
+@media (max-width: 640px) {
+    .dialect-grid { grid-template-columns: repeat(2, 1fr); }
+    .arch-flow { flex-direction: column; }
+    .arch-arrow { transform: rotate(90deg); }
+}

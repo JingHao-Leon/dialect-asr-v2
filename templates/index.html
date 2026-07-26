@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>方言语音识别系统 v2.0 · Fun-ASR 1.5</title>
+<link rel="stylesheet" href="/static/style.css?v=2.0">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🎙️ 方言语音识别系统</h1>
+        <p class="subtitle">
+            基于阿里云百炼 <b>Fun-ASR 1.5</b> · 7 大方言体系 + 30 种语言 · 自动检测
+        </p>
+        <p class="engine-tag" id="engine-tag">⏳ 检查引擎...</p>
+    </header>
+
+    <!-- 配置面板 -->
+    <section class="panel config-panel">
+        <h2>① 选择方言 / 语言 <span class="count-badge" id="count-badge">28</span></h2>
+        <p class="hint">Fun-ASR 1.5 自动检测语种，"方言提示"让模型更聚焦。语言代码标注在括号里。</p>
+
+        <!-- 通用 -->
+        <div class="dialect-group">
+            <div class="group-title">🌐 通用</div>
+            <div class="dialect-grid">
+                <label class="dialect-chip default-on">
+                    <input type="radio" name="dialect" value="auto" checked>
+                    <span>🪄 自动检测</span>
+                </label>
+                <label class="dialect-chip">
+                    <input type="radio" name="dialect" value="普通话">
+                    <span>🟢 普通话 (zh)</span>
+                </label>
+                <label class="dialect-chip">
+                    <input type="radio" name="dialect" value="英语">
+                    <span>🇺🇸 英语 (en)</span>
+                </label>
+                <label class="dialect-chip">
+                    <input type="radio" name="dialect" value="日语">
+                    <span>🇯🇵 日语 (ja)</span>
+                </label>
+                <label class="dialect-chip">
+                    <input type="radio" name="dialect" value="韩语">
+                    <span>🇰🇷 韩语 (ko)</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- 七大方言体系 -->
+        <div class="dialect-group">
+            <div class="group-title">🗣️ 汉语七大方言体系</div>
+            <div class="dialect-grid">
+                <label class="dialect-chip">
+                    <input type="radio" name="dialect" value="粤语">
+                    <span>🟡 粤语 (yue)</span>
+                </label>
+                <label class="dialect-chip">
+                    <input type="radio" name="dialect" value="吴语">
+                    <span>🔵 吴语 (wuu)</span>
+                </label>
+                <label class="dialect-chip">
+                    <input type="radio" name="dialect" value="闽语">
+                    <span>🟠 闽语 (nan)</span>
+                </label>
+                <label class="dialect-chip">
+                    <input type="radio" name="dialect" value="客家话">
+                    <span>🟤 客家话 (hak)</span>
+                </label>
+                <label class="dialect-chip">
+                    <input type="radio" name="dialect" value="湘语">
+                    <span>🟣 湘语 (xiang)</span>
+                </label>
+                <label class="dialect-chip">
+                    <input type="radio" name="dialect" value="赣语">
+                    <span>🟪 赣语 (gan)</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- 官话子方言 -->
+        <details class="dialect-group" open>
+            <summary class="group-title">🏔️ 官话子方言 (zh · 15 种)</summary>
+            <div class="dialect-grid">
+                <label class="dialect-chip"><input type="radio" name="dialect" value="东北话"><span>🥟 东北话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="北京话"><span>🏛️ 北京话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="天津话"><span>🛶 天津话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="山东话"><span>🥬 山东话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="河南话"><span>🌾 河南话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="陕西话"><span>🏯 陕西话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="甘肃话"><span>🐎 甘肃话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="宁夏话"><span>🐏 宁夏话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="山西话"><span>🍜 山西话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="四川话"><span>🐼 四川话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="云南话"><span>🌺 云南话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="贵州话"><span>🌶️ 贵州话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="湖北话"><span>🌉 湖北话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="湖南话"><span>🍵 湖南话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="江西话"><span>⛰️ 江西话</span></label>
+            </div>
+        </details>
+
+        <!-- 吴语子方言 -->
+        <details class="dialect-group">
+            <summary class="group-title">🌊 吴语子方言 (wuu · 4 种)</summary>
+            <div class="dialect-grid">
+                <label class="dialect-chip"><input type="radio" name="dialect" value="上海话"><span>🏙️ 上海话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="苏州话"><span>🏯 苏州话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="杭州话"><span>🍃 杭州话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="宁波话"><span>🌊 宁波话</span></label>
+            </div>
+        </details>
+
+        <!-- 闽语子方言 -->
+        <details class="dialect-group">
+            <summary class="group-title">🐉 闽语子方言 (nan · 4 种)</summary>
+            <div class="dialect-grid">
+                <label class="dialect-chip"><input type="radio" name="dialect" value="闽南语"><span>🎭 闽南语</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="潮汕话"><span>🫖 潮汕话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="闽东话"><span>⛰️ 闽东话</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="闽北话"><span>🍵 闽北话</span></label>
+            </div>
+        </details>
+
+        <!-- 其他世界语言 -->
+        <details class="dialect-group">
+            <summary class="group-title">🌍 其他世界语言</summary>
+            <div class="dialect-grid">
+                <label class="dialect-chip"><input type="radio" name="dialect" value="俄语"><span>🇷🇺 俄语 (ru)</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="法语"><span>🇫🇷 法语 (fr)</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="西班牙语"><span>🇪🇸 西语 (es)</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="阿拉伯语"><span>🇸🇦 阿语 (ar)</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="泰语"><span>🇹🇭 泰语 (th)</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="越南语"><span>🇻🇳 越语 (vi)</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="印尼语"><span>🇮🇩 印尼 (id)</span></label>
+                <label class="dialect-chip"><input type="radio" name="dialect" value="马来语"><span>🇲🇾 马来 (ms)</span></label>
+            </div>
+        </details>
+    </section>
+
+    <!-- 录音面板 -->
+    <section class="panel record-panel">
+        <h2>② 录音与识别</h2>
+        <div class="record-row">
+            <button id="btn-record" class="btn btn-primary">
+                <span class="icon">⏺</span> 开始录音
+            </button>
+            <button id="btn-stop" class="btn btn-danger" disabled>
+                <span class="icon">⏹</span> 停止并识别
+            </button>
+            <button id="btn-playback" class="btn" disabled>
+                <span class="icon">▶</span> 回放
+            </button>
+            <span id="status" class="status">就绪</span>
+        </div>
+        <canvas id="waveform" width="800" height="100"></canvas>
+        <audio id="audio-playback" controls style="display:none; width: 100%; margin-top: 12px;"></audio>
+    </section>
+
+    <!-- 结果展示 -->
+    <section class="panel result-panel" id="result-panel" style="display:none;">
+        <h2>③ 识别结果</h2>
+
+        <!-- 元信息 -->
+        <div class="result-meta-top">
+            <span class="meta-item">
+                <span class="meta-label">引擎</span>
+                <b id="meta-engine">—</b>
+            </span>
+            <span class="meta-item">
+                <span class="meta-label">检测语种</span>
+                <b id="meta-dialect" class="meta-dialect">—</b>
+            </span>
+            <span class="meta-item">
+                <span class="meta-label">置信度</span>
+                <b id="meta-confidence">—</b>
+            </span>
+            <span class="meta-item">
+                <span class="meta-label">STT 延迟</span>
+                <b id="meta-stt-latency">—</b>
+            </span>
+            <span class="meta-item">
+                <span class="meta-label">总耗时</span>
+                <b id="meta-total-latency">—</b>
+            </span>
+        </div>
+
+        <!-- 方言原文（高亮） -->
+        <div class="result-cell">
+            <div class="result-label">
+                方言识别结果
+                <span class="label-hint">（Fun-ASR 1.5 原生输出 · 自动高亮方言词）</span>
+            </div>
+            <div id="result-raw" class="result-text accent">—</div>
+        </div>
+
+        <!-- 标准普通话（LLM 归一化） -->
+        <div class="result-cell" id="standard-cell" style="display:none;">
+            <div class="result-label">
+                标准普通话转写
+                <span class="label-hint">（Qwen LLM 归一化，可选）</span>
+            </div>
+            <div id="result-standard" class="result-text">—</div>
+        </div>
+
+        <!-- 句子级时间戳 -->
+        <details class="sentences-details" id="sentences-details" style="display:none;">
+            <summary>句子级时间戳（共 <b id="sent-count">0</b> 句）</summary>
+            <div id="sentences-list" class="sentences-list"></div>
+        </details>
+    </section>
+
+    <!-- 架构展示 -->
+    <section class="panel arch-panel">
+        <h2>④ 系统架构</h2>
+        <div class="arch-flow">
+            <div class="arch-step">🎤 浏览器<br><small>MediaRecorder (webm)</small></div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-step">⚡ FastAPI<br><small>接收 + ffmpeg 转码</small></div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-step">🤖 Fun-ASR 1.5<br><small>百炼 API · MoE 架构</small></div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-step">📝 方言后处理<br><small>高亮 + Qwen 归一化</small></div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-step">📄 结果展示</div>
+        </div>
+        <div class="arch-note">
+            <b>Fun-ASR 1.5 关键指标</b>：7 大汉语方言体系原生支持，5 种方言准确率 &gt; 90%，
+            字错误率较前代 ↓56.2%，30 种语言自由切换，
+            古诗词识别字符级准确率 97%。
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>基于 FastAPI + DashScope Fun-ASR 1.5 ｜ 课程设计项目</p>
+</footer>
+
+<script src="/static/app.js?v=2.0"></script>
+</body>
+</html>
